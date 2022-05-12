@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -28,8 +30,14 @@ type Room struct {
 	Type      string `json:"type"`
 }
 
+var rent = "80000"
+var roomType = "1R,1K|1DK|1LDK"
+
 func main() {
-	fmt.Print("\n☆☆☆神奈川☆☆☆\n\n")
+	rent = os.Args[1]
+	roomType = os.Args[2]
+
+	fmt.Print("\n☆☆☆ 神奈川 ☆☆☆\n\n")
 	search("14", "01")
 	search("14", "02")
 	search("14", "03")
@@ -37,7 +45,7 @@ func main() {
 	search("14", "05")
 	search("14", "06")
 
-	fmt.Print("\n☆☆☆東京☆☆☆\n\n")
+	fmt.Print("\n☆☆☆ 東京 ☆☆☆\n\n")
 	search("13", "01")
 	search("13", "02")
 	search("13", "03")
@@ -45,13 +53,13 @@ func main() {
 	search("13", "05")
 	search("13", "06")
 
-	fmt.Print("\n☆☆☆埼玉☆☆☆\n\n")
+	fmt.Print("\n☆☆☆ 埼玉 ☆☆☆\n\n")
 	search("11", "01")
 	search("11", "02")
 	search("11", "03")
 	search("11", "04")
 
-	fmt.Print("\n☆☆☆千葉☆☆☆\n\n")
+	fmt.Print("\n☆☆☆ 千葉 ☆☆☆\n\n")
 	search("12", "01")
 	search("12", "02")
 	search("12", "03")
@@ -59,6 +67,9 @@ func main() {
 	search("12", "05")
 	search("12", "06")
 	search("12", "07")
+
+	fmt.Print("\n☆☆☆ 京都 ☆☆☆\n\n")
+	search("26", "01")
 }
 
 func search(tdfk string, area string) {
@@ -79,9 +90,9 @@ func search(tdfk string, area string) {
 
 func fetchBukken(tdfk string, area string) []Bukken {
 	formData := url.Values{
-		"rent_high": []string{"80000"},
+		"rent_high": []string{rent},
 		"rent_low":  []string{"40000"},
-		"room":      []string{"1R,1K", "1DK", "1LDK"},
+		"room":      strings.Split(roomType, "|"),
 		"tdfk":      []string{tdfk},
 		"area":      []string{area},
 	}
@@ -100,9 +111,9 @@ func fetchBukken(tdfk string, area string) []Bukken {
 
 func fetchRoom(tdfk string, bukken Bukken) []Room {
 	formData := url.Values{
-		"rent_high": []string{"80000"},
+		"rent_high": []string{rent},
 		"rent_low":  []string{"40000"},
-		"room":      []string{"1R,1K", "1DK", "1LDK"},
+		"room":      strings.Split(roomType, "|"),
 		"tdfk":      []string{tdfk},
 		"mode":      []string{"init"},
 		"id":        []string{bukken.Id},
