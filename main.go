@@ -72,6 +72,7 @@ func main() {
 	search("26", "01")
 }
 
+// tdkf: 都道府県
 func search(tdfk string, area string) {
 	bukkens := fetchBukken(tdfk, area)
 	for _, bukken := range bukkens {
