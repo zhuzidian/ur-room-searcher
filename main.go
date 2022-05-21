@@ -53,23 +53,35 @@ func main() {
 	search("13", "05")
 	search("13", "06")
 
+	time.Sleep(5 * time.Second)
+
 	fmt.Print("\n☆☆☆ 埼玉 ☆☆☆\n\n")
 	search("11", "01")
 	search("11", "02")
 	search("11", "03")
 	search("11", "04")
 
+	time.Sleep(5 * time.Second)
+
 	fmt.Print("\n☆☆☆ 千葉 ☆☆☆\n\n")
 	search("12", "01")
 	search("12", "02")
 	search("12", "03")
 	search("12", "04")
-	search("12", "05")
-	search("12", "06")
-	search("12", "07")
+	// search("12", "05")
+	// search("12", "06")
+	// search("12", "07")
+
+	time.Sleep(5 * time.Second)
 
 	fmt.Print("\n☆☆☆ 京都 ☆☆☆\n\n")
 	search("26", "01")
+
+	time.Sleep(5 * time.Second)
+
+	fmt.Print("\n☆☆☆ 大阪 ☆☆☆\n\n")
+	search("27", "01")
+	// search("27", "02")
 }
 
 // tdkf: 都道府県
@@ -85,8 +97,6 @@ func search(tdfk string, area string) {
 			fmt.Printf("\t%s | %s | %s \n", room.Name, room.Rent+room.Commonfee, room.Type)
 		}
 	}
-
-	time.Sleep(5 * time.Second)
 }
 
 func fetchBukken(tdfk string, area string) []Bukken {
