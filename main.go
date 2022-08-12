@@ -80,10 +80,10 @@ func main() {
 	time.Sleep(5 * time.Second)
 	search("26", "01")
 
-	fmt.Print("\n☆☆☆ 大阪 ☆☆☆\n\n")
-	time.Sleep(5 * time.Second)
-	search("27", "01")
-	search("27", "02")
+	// fmt.Print("\n☆☆☆ 大阪 ☆☆☆\n\n")
+	// time.Sleep(5 * time.Second)
+	// search("27", "01")
+	// search("27", "02")
 }
 
 // tdkf: 都道府県
@@ -96,7 +96,7 @@ func search(tdfk string, area string) {
 		fmt.Printf("%s | %s | %s \n", bukken.Name, bukken.Skcs, "https://www.ur-net.go.jp"+bukken.BukkenUrl)
 		rooms := getRoom(tdfk, bukken)
 		for _, room := range rooms {
-			fmt.Printf("\t%s | %s | %s \n", room.Name, room.Rent+room.Commonfee, room.Type)
+			fmt.Printf("\t%s | %5s | %s \n", room.Rent+room.Commonfee, room.Type, room.Name)
 		}
 	}
 }
