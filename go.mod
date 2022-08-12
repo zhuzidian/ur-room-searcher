@@ -1,3 +1,3 @@
-module ur-search
+module ur-room-searcher
 
-go 1.18
+go 1.19
